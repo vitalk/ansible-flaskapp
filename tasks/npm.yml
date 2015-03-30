@@ -1,0 +1,43 @@
+---
+- name: Add the nodejs repository
+  apt_repository: repo=ppa:chris-lea/node.js state=present
+  sudo: true
+  tags:
+    - apt
+    - npm
+    - setup
+
+- name: Install the nodejs package
+  apt: pkg=nodejs state=present
+  sudo: true
+  tags:
+    - apt
+    - npm
+    - setup
+
+- name: Install required node packages
+  npm: path={{ app_directory }} state=present
+  tags: npm
+
+- name: Get path of the node binaries
+  shell: npm bin
+  args:
+    chdir: "{{ app_directory }}"
+  register: node_bin
+  tags: npm
+
+- name: Add node binaries to user's PATH
+  lineinfile:
+    dest=/home/{{ app_user }}/.bashrc
+    state=present
+    line='export PATH="$PATH:{{ node_bin.stdout }}"'
+  when: node_bin is defined
+  tags:
+    - npm
+    - setup
+
+- name: Install required bower packages
+  command: "{{ node_bin.stdout }}/bower install"
+  args:
+    chdir: "{{ app_directory }}"
+  tags: npm

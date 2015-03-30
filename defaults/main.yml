@@ -1,0 +1,35 @@
+# The name of the application, uses to create application directory, e.g.
+# should be a shorthand, lowercase and not contain any whitespaces.
+app_name: app
+
+# The user to run application.
+app_user: "{{ app_name }}"
+
+# The directory to keep application source code.
+app_directory: "/home/{{ app_user }}/{{ app_name }}"
+
+# The directory to keep application logs.
+app_log_directory: "{{ app_directory }}/log"
+
+# The path to application requirements.
+app_requirements: "{{ app_directory }}/{{ app_name }}/requirements.txt"
+
+# The remote git repository to pull application code from, for example:
+# ssh://git@github.com/vitalk/app.git
+app_repository: git@github.com:vitalk/flaskapp.git
+
+# The version of the repository to checkout. This can be a full
+# 40-character SHA1 hash, the branch or a tag name.
+app_version: master
+
+# The list of environment variables uses to run most of commands.
+app_environment:
+  PATH: "{{ app_directory }}/bin:{{ ansible_env.PATH }}"
+
+# The list of custom commands to run before and after deploy. These commands
+# uses previously defined environment to run.
+app_pre_hooks: []
+app_post_hooks: []
+
+# The path to application config to use when launch application.
+app_config:

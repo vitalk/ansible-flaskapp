@@ -1,0 +1,74 @@
+---
+- name: Install packages required for python development
+  apt: pkg={{ item }} state=present
+  sudo: true
+  with_items:
+    - git
+    - libpq-dev
+    - python-dev
+    - python-psycopg2
+    - python-virtualenv
+    - build-essential
+  tags:
+    - apt
+    - setup
+
+- include: pip.yml
+
+- name: Run pre hooks
+  command: "{{ item }} chdir={{ app_directory }}"
+  with_items: app_pre_hooks
+  environment: app_environment
+  tags:
+    - app
+    - hook
+
+- name: Checkout the latest source code
+  git: repo={{ app_repository }} dest={{ app_directory }}
+    version={{ app_version }} accept_hostkey=true
+  when: app_repository is defined
+  tags: app
+
+- stat: path={{ app_config }}
+  delegate_to: localhost
+  register: app_config_file
+  when: app_config is defined
+  tags:
+    - app
+    - config
+
+- name: Copy application config to remote
+  copy:
+    src={{ app_config }}
+    dest={{ app_directory }}
+  when: app_config_file.stat.exists
+  tags:
+    - app
+    - config
+
+- name: Ensure the log directory exists
+  file:
+    path={{ app_log_directory }}
+    state=directory
+  tags:
+    - app
+    - config
+
+- name: Install application dependencies into virtualenv
+  pip:
+    requirements={{ app_requirements }}
+    virtualenv={{ app_directory }}
+    state=present
+  tags:
+    - app
+    - pip
+
+- include: npm.yml
+
+- name: Run post hooks
+  command: "{{ item }} chdir={{ app_directory }}"
+  with_items: app_post_hooks
+  environment: app_environment
+  tags:
+    - app
+    - hook

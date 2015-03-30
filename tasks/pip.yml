@@ -1,0 +1,37 @@
+---
+- name: Install the latest pip version
+  pip: name=pip extra_args='-U'
+  sudo: true
+  tags:
+    - pip
+    - setup
+
+- name: Ensure the pip config directory is exist
+  file:
+    path=/home/{{ app_user }}/.pip
+    owner={{ app_user }} group={{ app_user }} mode=0755
+    state=directory
+  tags:
+    - pip
+    - setup
+    - config
+
+- name: Ensure the pip config file is exist
+  file:
+    path=/home/{{ app_user }}/.pip/pip.conf
+    owner={{ app_user }} group={{ app_user }} mode=0644
+    state=touch
+  tags:
+    - pip
+    - setup
+    - config
+
+- name: Ensure pip packages are cached
+  lineinfile:
+    dest=/home/{{ app_user }}/.pip/pip.conf
+    line='[global]\ndownload_cache = ~/.cache/pip\n'
+    state=present
+  tags:
+    - pip
+    - setup
+    - config
