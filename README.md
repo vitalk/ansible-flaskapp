@@ -21,7 +21,7 @@ define your production infrastruncture and just:
 | `app_log_directory` | The directory to keep application logs, e.g. `{{ app_directory }}/log`. |
 | `app_requirements`  | The path to application requirements, e.g. `{{ app_directory }}/{{ app_name }}/requirements.txt`. |
 | `app_repository`    | The remote git repository to pull application code from, e.g. `ssh://git@github.com/vitalk/flaskapp.git`. |
-| `app_version`       | The version of the repository to checkout. This can be a full 40-character SHA1 hash, the branch or a tag name, e.g. `master`. |
+| `app_version`       | The version of the repository to checkout. This can be a full 40-character SHA1 hash, a branch or a tag name, e.g. `master`. |
 | `app_environment`   | The list of environment variables uses to run most of commands. |
 | `app_pre_hooks`     | The list of custom commands to run before deploy. These commands uses previously defined environment to run. |
 | `app_post_hooks`    | The list of custom commands to run after deploy. |
