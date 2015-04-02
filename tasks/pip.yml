@@ -29,8 +29,12 @@
 - name: Ensure pip packages are cached
   lineinfile:
     dest=/home/{{ app_user }}/.pip/pip.conf
-    line='[global]\ndownload_cache = ~/.cache/pip\n'
+    regexp="{{ item.regexp }}"
+    line="{{ item.line }}"
     state=present
+  with_items:
+    - { regexp: '^\[global\]$', line: '[global]' }
+    - { regexp: '^download_cache', line: 'download_cache = ~/.cache/pip' }
   tags:
     - pip
     - setup
