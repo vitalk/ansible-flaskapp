@@ -65,7 +65,7 @@
     - pip
 
 - include: npm.yml
-  when: app_requires_npm
+  when: app_requires_npm or app_requires_bower
 
 - name: Run post hooks
   command: "{{ item }} chdir={{ app_directory }}"

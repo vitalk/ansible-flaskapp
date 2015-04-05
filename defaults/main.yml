@@ -36,3 +36,6 @@ app_config:
 
 # Install `nodejs` and required package dependencies via `npm`?
 app_requires_npm: no
+
+# Install frontend package dependencies via `bower`?
+app_requires_bower: no

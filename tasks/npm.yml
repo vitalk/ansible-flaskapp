@@ -37,3 +37,4 @@
     - setup
 
 - include: bower.yml
+  when: app_requires_bower
