@@ -1,0 +1,6 @@
+---
+- name: Install required bower packages
+  command: "{{ node_bin.stdout }}/bower --allow-root install"
+  args:
+    chdir: "{{ app_directory }}"
+  tags: npm
