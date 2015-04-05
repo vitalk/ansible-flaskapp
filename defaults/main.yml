@@ -33,3 +33,6 @@ app_post_hooks: []
 
 # The path to application config to use when launch application.
 app_config:
+
+# Install `nodejs` and required package dependencies via `npm`?
+app_requires_npm: no
