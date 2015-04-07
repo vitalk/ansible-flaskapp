@@ -1,7 +1,7 @@
 # Flask app
 
 Ansible recipe to deploy Flask application. This recipe does not trying to
-define your production infrastruncture and just:
+define your production infrastructure and just:
 
 - Install required system packages to serve python application
 - Run pre deploy hooks
@@ -33,7 +33,7 @@ define your production infrastruncture and just:
 
 ## License
 
-Licensed unser the [MIT license](http://mit-license.org/vitalk).
+Licensed under the [MIT license](http://mit-license.org/vitalk).
 
 
 ## Self-Promotion
