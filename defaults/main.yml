@@ -12,7 +12,7 @@ app_directory: "/home/{{ app_user }}/{{ app_name }}"
 app_log_directory: "{{ app_directory }}/log"
 
 # The path to application requirements.
-app_requirements: "{{ app_directory }}/{{ app_name }}/requirements.txt"
+app_requirements: "{{ app_directory }}/requirements.txt"
 
 # The remote git repository to pull application code from, for example:
 # ssh://git@github.com/vitalk/app.git
