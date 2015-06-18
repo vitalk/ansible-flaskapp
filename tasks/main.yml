@@ -26,6 +26,7 @@
 - name: Checkout the latest source code
   git: repo={{ app_repository }} dest={{ app_directory }}
     version={{ app_version }} accept_hostkey=true
+    force=yes
   when: app_repository is defined
   tags: app
 
