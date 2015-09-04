@@ -9,7 +9,7 @@ app_user: "{{ app_name }}"
 app_directory: "/home/{{ app_user }}/{{ app_name }}"
 
 # The directory to keep application logs.
-app_log_directory: "{{ app_directory }}/log"
+app_log_directory:
 
 # The path to application requirements.
 app_requirements: "{{ app_directory }}/requirements.txt"
