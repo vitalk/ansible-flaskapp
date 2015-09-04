@@ -52,6 +52,7 @@
   file:
     path={{ app_log_directory }}
     state=directory
+  when: app_log_directory is defined
   tags:
     - app
     - config
