@@ -19,7 +19,7 @@ define your production infrastructure and just:
 | `app_name`           | The name of the application, uses to create application directory, e.g. should be a shorthand, lowercase and not contain any whitespaces, e.g. `app`. |
 | `app_user`           | The user to run application, e.g. `{{ app_name }}`. |
 | `app_directory`      | The directory to keep application source code, e.g. `/home/{{ app_user }}/{{ app_name }}`. |
-| `app_log_directory`  | The directory to keep application logs, e.g. `{{ app_directory }}/log`. |
+| `app_log_directory`  | The directory to keep application logs if any. |
 | `app_requirements`   | The path to application requirements, e.g. `{{ app_directory }}/requirements.txt`. |
 | `app_repository`     | The remote git repository to pull application code from, e.g. `ssh://git@github.com/vitalk/flaskapp.git`. |
 | `app_version`        | The version of the repository to checkout. This can be a full 40-character SHA1 hash, a branch or a tag name, e.g. `master`. |
