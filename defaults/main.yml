@@ -34,6 +34,15 @@ app_post_hooks: []
 # The path to application config to use when launch application.
 app_config:
 
+# The list of system packages required to build/run application.
+app_packages:
+  - git
+  - build-essential
+  - python-dev
+  - python-virtualenv
+  - libpq-dev
+  - python-psycopg2
+
 # Install `nodejs` and required package dependencies via `npm`?
 app_requires_npm: no
 
