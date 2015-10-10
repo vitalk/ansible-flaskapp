@@ -27,6 +27,7 @@ define your production infrastructure and just:
 | `app_pre_hooks`      | The list of custom commands to run before deploy. These commands uses previously defined environment to run. |
 | `app_post_hooks`     | The list of custom commands to run after deploy. |
 | `app_config`         | The path to application config to use when launch application. |
+| `app_packages`       | The list of system packages required to build/run application. |
 | `app_requires_npm`   | Install `nodejs` and required package dependencies via `npm`? Nope. |
 | `app_requires_bower` | Install required frontend dependencies via `bower`? Nope. |
 
