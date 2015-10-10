@@ -27,14 +27,14 @@
   git: repo={{ app_repository }} dest={{ app_directory }}
     version={{ app_version }} accept_hostkey=true
     force=yes
-  when: app_repository is defined
+  when: app_repository
   tags: app
 
 - stat: path={{ app_config }}
   delegate_to: localhost
   sudo: false
   register: app_config_file
-  when: app_config is defined
+  when: app_config
   tags:
     - app
     - config
@@ -52,7 +52,7 @@
   file:
     path={{ app_log_directory }}
     state=directory
-  when: app_log_directory is defined
+  when: app_log_directory
   tags:
     - app
     - config
