@@ -2,13 +2,7 @@
 - name: Install packages required for python development
   apt: pkg={{ item }} state=present
   sudo: true
-  with_items:
-    - git
-    - libpq-dev
-    - python-dev
-    - python-psycopg2
-    - python-virtualenv
-    - build-essential
+  with_items: app_packages
   tags:
     - apt
     - setup
