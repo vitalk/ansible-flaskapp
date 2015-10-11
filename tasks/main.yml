@@ -37,7 +37,7 @@
   copy:
     src={{ app_config }}
     dest={{ app_directory }}
-  when: app_config_file.stat.exists
+  when: app_config_file is defined and app_config_file.stat.exists
   tags:
     - app
     - config
