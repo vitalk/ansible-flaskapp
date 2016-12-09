@@ -1,7 +1,7 @@
 ---
 - name: Add the nodejs repository
   apt_repository: repo=ppa:chris-lea/node.js state=present
-  sudo: true
+  become: true
   tags:
     - apt
     - npm
@@ -9,7 +9,7 @@
 
 - name: Install the nodejs package
   apt: pkg=nodejs state=present
-  sudo: true
+  become: true
   tags:
     - apt
     - npm

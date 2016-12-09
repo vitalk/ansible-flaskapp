@@ -1,8 +1,8 @@
 ---
 - name: Install packages required for python development
   apt: pkg={{ item }} state=present
-  sudo: true
-  with_items: app_packages
+  become: true
+  with_items: "{{ app_packages }}"
   tags:
     - apt
     - setup
@@ -11,7 +11,7 @@
 
 - name: Run pre hooks
   command: "{{ item }} chdir={{ app_directory }}"
-  with_items: app_pre_hooks
+  with_items: "{{ app_pre_hooks }}"
   environment: app_environment
   tags:
     - app
@@ -26,7 +26,7 @@
 
 - stat: path={{ app_config }}
   delegate_to: localhost
-  sudo: false
+  become: false
   register: app_config_file
   when: app_config is defined and app_config
   tags:
@@ -65,7 +65,7 @@
 
 - name: Run post hooks
   command: "{{ item }} chdir={{ app_directory }}"
-  with_items: app_post_hooks
+  with_items: "{{ app_post_hooks }}"
   environment: app_environment
   tags:
     - app
