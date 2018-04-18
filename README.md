@@ -41,5 +41,5 @@ Licensed under the [MIT license](http://mit-license.org/vitalk).
 
 Created by Vital Kudzelka.
 
-Open [a GitHub issue](https://github.com/vitalk/ansible-flask-app/issues) if
+Open [a GitHub issue](https://github.com/vitalk/ansible-flaskapp/issues) if
 you have any suggestion or found a bug.
